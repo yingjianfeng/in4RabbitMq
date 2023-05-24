@@ -1,0 +1,16 @@
+
+
+#============ server 配置 ==========#
+server:
+    port: 8081
+    servlet:
+      #============ 中文编码乱码问题，spring-boot 2.X ==========#
+      encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
+spring:
+    application:
+        name: cloud-controller-producer
+
+spring.profiles.include: producer-dev
