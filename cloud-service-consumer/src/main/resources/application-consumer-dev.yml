@@ -11,8 +11,25 @@ spring:
         my-input-channel:
           destination: my-queue
           binder: rabbit
+          group: my-queue-group
+        my-ack-input-channel:
+          destination: my-ack-queue
+          binder: rabbit
+          group: my-ack-queue-group
+          consumer:
+            #默认为3次，禁用重试
+            max-attempts: 4
+            requeue-rejected: true
       rabbit:
         bindings:
           my-input-channel:
             consumer:
               bindingRoutingKey: my-queue
+          my-ack-input-channel:
+            consumer:
+              acknowledge-mode: manual
+              bindingRoutingKey: my-ack-queue
+              receive-timeout: 5000
+              republish-to-dlq: true
+              dead-letter-exchange: deadEx
+              dead-letter-queue-name: deadExName

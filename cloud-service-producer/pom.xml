@@ -13,7 +13,6 @@
     </parent>
 
     <dependencies>
-
         <!-- rabbitMq-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

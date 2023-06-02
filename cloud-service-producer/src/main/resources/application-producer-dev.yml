@@ -5,11 +5,17 @@ spring:
         my-output-channel:
           destination: my-queue
           binder: mybinders
+        my-ack-output-channel:
+          destination: my-ack-queue
+          binder: mybinders
       rabbit:
         bindings:
           my-output-channel:
             producer:
               bindingRoutingKey: my-queue
+          my-ack-output-channel:
+            producer:
+              bindingRoutingKey: my-ack-queue
       binders:
         mybinders:
           type: rabbit
