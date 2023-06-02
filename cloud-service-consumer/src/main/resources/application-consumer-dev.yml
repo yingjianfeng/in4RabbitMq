@@ -16,10 +16,14 @@ spring:
           destination: my-ack-queue
           binder: rabbit
           group: my-ack-queue-group
-          consumer:
-            #默认为3次，禁用重试
-            max-attempts: 4
-            requeue-rejected: true
+#          consumer:
+#            #默认为3次，禁用重试
+#            max-attempts: 4
+#            requeue-rejected: true
+        my-lazy-input-channel:
+          destination: my-lazy-queue
+          binder: rabbit
+          group: my-lazy-queue-group
       rabbit:
         bindings:
           my-input-channel:
@@ -29,7 +33,10 @@ spring:
             consumer:
               acknowledge-mode: manual
               bindingRoutingKey: my-ack-queue
-              receive-timeout: 5000
-              republish-to-dlq: true
-              dead-letter-exchange: deadEx
-              dead-letter-queue-name: deadExName
+#              receive-timeout: 5000
+#              republish-to-dlq: true
+#              dead-letter-exchange: deadEx
+#              dead-letter-queue-name: deadExName
+          my-lazy-input-channel:
+            consumer:
+              bindingRoutingKey: my-lazy-queue

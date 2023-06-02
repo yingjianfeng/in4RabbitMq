@@ -8,6 +8,9 @@ spring:
         my-ack-output-channel:
           destination: my-ack-queue
           binder: mybinders
+        my-lazy-output-channel:
+          destination: my-lazy-queue
+          binder: mybinders
       rabbit:
         bindings:
           my-output-channel:
@@ -16,6 +19,10 @@ spring:
           my-ack-output-channel:
             producer:
               bindingRoutingKey: my-ack-queue
+          my-lazy-output-channel:
+            producer:
+              delayed-exchange: true
+              bindingRoutingKey: my-lazy-queue
       binders:
         mybinders:
           type: rabbit

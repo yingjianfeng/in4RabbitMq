@@ -2,6 +2,7 @@ package com.in.controller;
 
 import com.in.binders.MyMessageChannels;
 import com.in.producer.MyAckMessageProducer;
+import com.in.producer.MyLazyMessageProducer;
 import com.in.producer.MyMessageProducer;
 import lombok.AllArgsConstructor;
 
@@ -23,6 +24,7 @@ public class MyController {
 
     private final MyMessageProducer myMessageProducer;
     private final MyAckMessageProducer myAckMessageProducer;
+    private final MyLazyMessageProducer myLazyMessageProducer;
 
     @GetMapping("/produce/{message}")
     public String producer(@PathVariable("message") String message){
@@ -32,10 +34,17 @@ public class MyController {
     }
 
 
-    @GetMapping("/ack//produce/{message}")
+    @GetMapping("/ack/produce/{message}")
     public String producerAck(@PathVariable("message") String message){
         myAckMessageProducer.send(message);
 
+        return "success";
+    }
+
+
+    @GetMapping("/lazy/produce/{message}")
+    public String producerLazy(@PathVariable("message") String message){
+        myLazyMessageProducer.send(message);
         return "success";
     }
 
