@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <name>cloud-controller.producer</name>
   <groupId>com.in</groupId>
-  <artifactId>cloud-controller.producer</artifactId>
+  <artifactId>cloud-controller-producer</artifactId>
   <version>1.0</version>
 
   <parent>

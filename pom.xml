@@ -13,7 +13,7 @@
         <module>cloud-service-consumer</module>
         <module>cloud-service-producer</module>
         <module>cloud-controller-comsumer</module>
-        <module>cloud-controller.producer</module>
+        <module>cloud-controller-producer</module>
     </modules>
 
     <parent>
